@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sam & Natalie - Wedding Invitation</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="hero">
+        <div class="overlay"></div>
+        <div class="hero-content">
+            <h2 class="save-date">We're Getting Married</h2>
+            <div class="flourish">
+                <svg width="100" height="20">
+                    <path d="M 0,10 C 30,5 70,15 100,10" stroke="var(--gold)" fill="none" stroke-width="1" />
+                </svg>      
+            </div>
+            <h1 class="names">Sam & Natalie</h1>
+            <div class="flourish">
+                <svg width="100" height="20">
+                    <path d="M 0,10 C 30,5 70,15 100,10" stroke="var(--gold)" fill="none" stroke-width="1" />
+                </svg>      
+            </div>
+            <p class="date">Summer 2026</p>  </div>
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="#story">Our Story</a></li>
+            <li><a href="#locations">Ceremonies</a></li>
+        </ul>
+    </nav>
+
+    <section id="story" class="section">
+        <div class="container">
+            <h2>Our Story</h2>
+            <div class="decorative-line"></div>
+            <div class="content-wrapper">
+                <div class="image-frame">
+                    <img src="./images/villa1.avif" alt="Sam and Natalie" class="story-image">
+                </div>
+                <div class="text-content">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in odio at eros tincidunt
+                        rhoncus. Praesent in lectus ut enim facilisis facilisis. Curabitur vel ipsum vel leo faucibus
+                        facilisis.</p>
+                    <p>Sed tempor nibh vel turpis vestibulum, nec elementum magna egestas. Donec eget justo ac tortor
+                        sagittis pulvinar. Nulla facilisi. Cras feugiat, nibh eget efficitur eleifend.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="locations" class="section">
+        <div class="container">
+            <h2>Ceremony Information</h2>
+            <div class="decorative-line"></div>
+            <p class="locations-intro">We're celebrating our marriage in 2026. Please enter your invitation code to view
+                details.</p>
+    
+            <div class="invitation-code-area">
+                <div class="code-input-container">
+                    <input type="text" id="invitation-code" placeholder="Invite Code">
+                    <button id="code-submit" class="btn">Submit</button>
+                </div>
+                <p id="code-error" class="error-message"></p>
+            </div>
+    
+            <div class="location-cards hidden-section" id="locations-container">
+                <!-- Cards will appear here after code entry -->
+            </div>
+        </div>
+        </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-names">Sam & Natalie</div>
+            <div class="footer-date">Summer 2026</div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
