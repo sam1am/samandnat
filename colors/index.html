@@ -19,25 +19,13 @@
 
         <div id="colorsContainer"></div>
 
-        <div class="add-color-section">
-            <button class="btn-add-color" onclick="addColor()" title="Add Color">+</button>
+        <div class="action-buttons">
+            <button class="btn-circle btn-add" onclick="addColor()" title="Add Color">+</button>
+            <button class="btn-circle" onclick="toggleBackgroundSettings()" title="Background Settings">🖼️</button>
+            <button class="btn-circle" onclick="clearAll()" title="Clear All">🗑️</button>
         </div>
 
-        <div class="share-section">
-            <h2>Share Your Palette</h2>
-            <p>Copy the URL below to share your color scheme with others</p>
-            <div class="share-url">
-                <input type="text" id="shareUrl" readonly>
-                <button class="btn-primary" onclick="copyShareUrl()">Copy URL</button>
-            </div>
-        </div>
-
-        <div class="settings-footer">
-            <div class="footer-buttons">
-                <button class="btn-footer" onclick="toggleBackgroundSettings()">🖼️ Background</button>
-                <button class="btn-footer" onclick="clearAll()">🗑️ Clear All</button>
-            </div>
-            <div class="background-settings" id="backgroundSettings">
+        <div class="background-settings" id="backgroundSettings">
                 <div class="setting-group">
                     <label>Background Type</label>
                     <div class="background-type-buttons">
@@ -68,6 +56,15 @@
                         oninput="updateBackgroundOpacity(this.value)">
                     <span id="opacityValue">100%</span>
                 </div>
+            </div>
+        </div>
+
+        <div class="share-section">
+            <h2>Share Your Palette</h2>
+            <p>Copy the URL below to share your color scheme with others</p>
+            <div class="share-url">
+                <input type="text" id="shareUrl" readonly>
+                <button class="btn-primary" onclick="copyShareUrl()">Copy URL</button>
             </div>
         </div>
     </div>

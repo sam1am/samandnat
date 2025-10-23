@@ -4,6 +4,8 @@ let backgroundImage = '';
 let backgroundColor = '';
 let backgroundOpacity = 100;
 let backgroundType = 'color'; // 'color' or 'image'
+let originalColor = null; // Store original color for cancel
+let previewColors = []; // Store preview colors separately from actual colors
 
 // Initialize
 function init() {
@@ -49,7 +51,104 @@ function updateColor(index, color) {
 
 // Toggle color detail expansion
 function toggleColorDetail(index) {
-    expandedIndex = expandedIndex === index ? null : index;
+    // If there's a preview color that's different from the saved color, save it and close
+    if (previewColors[index] &&
+        /^#[0-9A-F]{6}$/i.test(previewColors[index]) &&
+        previewColors[index] !== colors[index]) {
+        colors[index] = previewColors[index];
+        updateUrl();
+        // Clear the preview so next click opens normally
+        previewColors[index] = null;
+        expandedIndex = null;
+        originalColor = null;
+        render();
+        return;
+    }
+
+    if (expandedIndex === index) {
+        // Clicking the swatch while expanded just closes it
+        expandedIndex = null;
+        originalColor = null;
+        render();
+        return;
+    }
+
+    expandedIndex = index;
+    originalColor = colors[index];
+    previewColors[index] = colors[index];
+    render();
+}
+
+// Preview color change (immediate visual feedback)
+function previewColor(index, color) {
+    previewColors[index] = color; // Store preview color
+
+    const colorBar = document.getElementById(`color-bar-${index}`);
+    const colorLabel = document.getElementById(`color-label-${index}`);
+    const colorText = document.getElementById(`color-text-${index}`);
+    const colorPicker = document.getElementById(`color-picker-${index}`);
+
+    if (colorBar) colorBar.style.backgroundColor = color;
+    if (colorLabel) colorLabel.textContent = color;
+    if (colorText) colorText.value = color;
+    if (colorPicker) colorPicker.value = color;
+
+    updateColorValues(index, color);
+}
+
+// Preview color from text input
+function previewColorFromText(index, color) {
+    let normalizedColor = color.trim();
+    if (!normalizedColor.startsWith('#')) {
+        normalizedColor = '#' + normalizedColor;
+    }
+
+    // Only preview if it's a valid hex color
+    if (/^#[0-9A-F]{6}$/i.test(normalizedColor)) {
+        previewColor(index, normalizedColor);
+    }
+}
+
+// Update color value displays
+function updateColorValues(index, color) {
+    const rgb = hexToRgb(color);
+    const hsl = hexToHsl(color);
+
+    if (!rgb || !hsl) return;
+
+    const hexValue = document.getElementById(`hex-value-${index}`);
+    const rgbValue = document.getElementById(`rgb-value-${index}`);
+    const rgbPlainValue = document.getElementById(`rgb-plain-value-${index}`);
+    const hslValue = document.getElementById(`hsl-value-${index}`);
+    const hslPlainValue = document.getElementById(`hsl-plain-value-${index}`);
+
+    if (hexValue) hexValue.textContent = color;
+    if (rgbValue) rgbValue.textContent = `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`;
+    if (rgbPlainValue) rgbPlainValue.textContent = `${rgb.r}, ${rgb.g}, ${rgb.b}`;
+    if (hslValue) hslValue.textContent = `hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`;
+    if (hslPlainValue) hslPlainValue.textContent = `${hsl.h}, ${hsl.s}%, ${hsl.l}%`;
+}
+
+// Confirm color change
+function confirmColor(index) {
+    // Use the preview color that was stored
+    if (previewColors[index] && /^#[0-9A-F]{6}$/i.test(previewColors[index])) {
+        colors[index] = previewColors[index];
+        updateUrl();
+    }
+
+    expandedIndex = null;
+    originalColor = null;
+    render();
+}
+
+// Cancel color change
+function cancelColorChange(index) {
+    if (originalColor) {
+        colors[index] = originalColor;
+    }
+    expandedIndex = null;
+    originalColor = null;
     render();
 }
 
@@ -339,14 +438,16 @@ function renderColors() {
     container.innerHTML = `
         <div class="colors-strip" id="colorsStrip">
             ${colors.map((color, index) => {
-                const rgb = hexToRgb(color);
-                const hsl = hexToHsl(color);
+                const displayColor = (expandedIndex === index && previewColors[index]) ? previewColors[index] : color;
+                const rgb = hexToRgb(displayColor);
+                const hsl = hexToHsl(displayColor);
                 const isExpanded = expandedIndex === index;
 
                 return `
                     <div class="color-wrapper ${isExpanded ? 'expanded' : ''}">
                         <div class="color-bar ${isExpanded ? 'active' : ''}"
-                             style="background-color: ${color}"
+                             id="color-bar-${index}"
+                             style="background-color: ${displayColor}"
                              draggable="true"
                              data-index="${index}"
                              ondragstart="handleDragStart(event, ${index})"
@@ -357,46 +458,40 @@ function renderColors() {
                              ondragend="handleDragEnd(event)"
                              onclick="toggleColorDetail(${index})">
                             <div class="color-picker-floating">
-                                <input type="color" value="${color}"
+                                <input type="color" value="${displayColor}"
+                                    id="color-picker-${index}"
                                     onclick="event.stopPropagation()"
-                                    onchange="updateColor(${index}, this.value)">
+                                    oninput="previewColor(${index}, this.value)">
                             </div>
-                            <div class="color-label">${color}</div>
+                            <div class="color-label" id="color-label-${index}">${displayColor}</div>
                             <div class="drag-handle">⋮⋮</div>
                         </div>
-                        <div class="color-detail-dropdown ${isExpanded ? 'show' : ''}">
+                        <div class="color-detail-dropdown ${isExpanded ? 'show' : ''}" id="color-detail-${index}">
                             <div class="detail-body">
-                                <div class="color-input-group">
-                                    <label>Hex Color</label>
-                                    <input type="text" value="${color}"
-                                        onchange="updateColor(${index}, this.value)"
-                                        placeholder="#000000">
-                                </div>
-                                <div class="color-values">
-                                    <div class="value-row" onclick="copyToClipboard('${color}')">
-                                        <span class="value-label">HEX</span>
-                                        <span class="value-text">${color}</span>
+                                <input type="text" value="${displayColor}"
+                                    id="color-text-${index}"
+                                    oninput="previewColorFromText(${index}, this.value)"
+                                    placeholder="#000000"
+                                    class="color-hex-input-simple">
+                                <div class="value-list">
+                                    <div class="value-item" onclick="copyToClipboard('${displayColor}')" title="Click to copy">
+                                        <span class="item-label">HEX</span>
+                                        <span class="item-value" id="hex-value-${index}">${displayColor}</span>
                                     </div>
-                                    <div class="value-row" onclick="copyToClipboard('rgb(${rgb.r}, ${rgb.g}, ${rgb.b})')">
-                                        <span class="value-label">RGB</span>
-                                        <span class="value-text">rgb(${rgb.r}, ${rgb.g}, ${rgb.b})</span>
+                                    <div class="value-item" onclick="copyToClipboard('${rgb.r}, ${rgb.g}, ${rgb.b}')" title="Click to copy">
+                                        <span class="item-label">RGB</span>
+                                        <span class="item-value" id="rgb-value-${index}">${rgb.r}, ${rgb.g}, ${rgb.b}</span>
                                     </div>
-                                    <div class="value-row" onclick="copyToClipboard('${rgb.r}, ${rgb.g}, ${rgb.b}')">
-                                        <span class="value-label">RGB (no prefix)</span>
-                                        <span class="value-text">${rgb.r}, ${rgb.g}, ${rgb.b}</span>
-                                    </div>
-                                    <div class="value-row" onclick="copyToClipboard('hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)')">
-                                        <span class="value-label">HSL</span>
-                                        <span class="value-text">hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)</span>
-                                    </div>
-                                    <div class="value-row" onclick="copyToClipboard('${hsl.h}, ${hsl.s}%, ${hsl.l}%')">
-                                        <span class="value-label">HSL (no prefix)</span>
-                                        <span class="value-text">${hsl.h}, ${hsl.s}%, ${hsl.l}%</span>
+                                    <div class="value-item" onclick="copyToClipboard('${hsl.h}, ${hsl.s}%, ${hsl.l}%')" title="Click to copy">
+                                        <span class="item-label">HSL</span>
+                                        <span class="item-value" id="hsl-value-${index}">${hsl.h}, ${hsl.s}%, ${hsl.l}%</span>
                                     </div>
                                 </div>
-                                <button class="remove-btn" onclick="event.stopPropagation(); removeColor(${index})">
-                                    Remove Color
-                                </button>
+                                <div class="detail-actions-simple">
+                                    <button class="btn-simple" onclick="event.stopPropagation(); confirmColor(${index})" title="Save">✓</button>
+                                    <button class="btn-simple" onclick="event.stopPropagation(); cancelColorChange(${index})" title="Cancel">✕</button>
+                                    <button class="btn-simple" onclick="event.stopPropagation(); removeColor(${index})" title="Remove">🗑️</button>
+                                </div>
                             </div>
                         </div>
                     </div>
