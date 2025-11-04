@@ -1,8 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Clear previous authentication (TEMPORARY FOR TESTING)
-    localStorage.removeItem('athensAuthenticated');
-    localStorage.removeItem('slcAuthenticated');
-
     // Smooth scrolling for navigation
     document.querySelectorAll('nav a').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
