@@ -11,8 +11,8 @@ let previewColors = []; // Store preview colors separately from actual colors
 function init() {
     loadFromUrl();
     if (colors.length === 0) {
-        // Add default colors
-        colors = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#FFA07A', '#98D8C8'];
+        // Add default colors from theme
+        colors = ['#c8c5be', '#acbfb5', '#9bb0b9', '#b68d97', '#7f323c'];
     }
     render();
     updateShareUrl();
@@ -325,10 +325,10 @@ function updateBackgroundOpacity(value) {
 // Clear background
 function clearBackground() {
     if (backgroundType === 'color') {
-        backgroundColor = '#f5f5f5';
-        document.getElementById('backgroundColor').value = '#f5f5f5';
-        document.getElementById('backgroundColorText').value = '#f5f5f5';
-        updateBackgroundColor('#f5f5f5');
+        backgroundColor = '#c8c5be';
+        document.getElementById('backgroundColor').value = '#c8c5be';
+        document.getElementById('backgroundColorText').value = '#c8c5be';
+        updateBackgroundColor('#c8c5be');
     } else {
         document.getElementById('backgroundUrl').value = '';
         updateBackgroundImage('');
@@ -347,7 +347,7 @@ function updateUrl() {
         params.set('bg', encodeURIComponent(backgroundImage));
     }
 
-    if (backgroundColor && backgroundColor !== '#f5f5f5') {
+    if (backgroundColor && backgroundColor !== '#c8c5be') {
         params.set('bgColor', backgroundColor.replace('#', ''));
     }
 
@@ -387,7 +387,7 @@ function loadFromUrl() {
         switchBackgroundType('color');
     } else {
         // Default to color type with default color
-        backgroundColor = '#f5f5f5';
+        backgroundColor = '#c8c5be';
         const overlay = document.getElementById('backgroundOverlay');
         overlay.style.backgroundColor = backgroundColor;
     }

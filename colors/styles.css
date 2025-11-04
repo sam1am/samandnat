@@ -6,10 +6,10 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    background: #f5f5f5;
+    background: #c8c5be;
     min-height: 100vh;
     padding: 20px;
-    color: #333;
+    color: #7f323c;
     position: relative;
 }
 
@@ -47,12 +47,12 @@ header {
 h1 {
     font-size: 2.5em;
     margin-bottom: 10px;
-    color: #333;
+    color: #7f323c;
 }
 
 .subtitle {
     font-size: 1.1em;
-    color: #666;
+    color: #9bb0b9;
 }
 
 .action-buttons {
@@ -68,8 +68,8 @@ h1 {
     height: 60px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.9);
-    border: 2px solid #333;
-    color: #333;
+    border: 2px solid #7f323c;
+    color: #7f323c;
     font-size: 24px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -87,7 +87,7 @@ h1 {
 }
 
 .btn-circle:hover {
-    background: #333;
+    background: #7f323c;
     color: white;
     transform: scale(1.1);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
@@ -106,22 +106,22 @@ button {
 }
 
 .btn-primary {
-    background: #333;
+    background: #7f323c;
     color: white;
 }
 
 .btn-primary:hover {
-    background: #000;
+    background: #b68d97;
     transform: translateY(-2px);
 }
 
 .btn-secondary {
-    background: #e0e0e0;
-    color: #333;
+    background: #acbfb5;
+    color: #7f323c;
 }
 
 .btn-secondary:hover {
-    background: #d0d0d0;
+    background: #9bb0b9;
 }
 
 .btn-small {
@@ -130,12 +130,12 @@ button {
 }
 
 .btn-ok {
-    background: #4caf50;
+    background: #acbfb5;
     color: white;
 }
 
 .btn-ok:hover {
-    background: #45a049;
+    background: #9bb0b9;
 }
 
 .background-settings {
@@ -176,7 +176,7 @@ button {
 .setting-group label {
     display: block;
     font-size: 10px;
-    color: #888;
+    color: #9bb0b9;
     margin-bottom: 6px;
     text-transform: uppercase;
     font-weight: 600;
@@ -186,7 +186,7 @@ button {
 .setting-group input[type="text"] {
     width: 100%;
     padding: 8px;
-    border: 1px solid #e0e0e0;
+    border: 1px solid #acbfb5;
     border-radius: 6px;
     font-size: 12px;
     transition: border-color 0.3s ease;
@@ -194,7 +194,7 @@ button {
 
 .setting-group input[type="text"]:focus {
     outline: none;
-    border-color: #999;
+    border-color: #9bb0b9;
 }
 
 .input-with-button {
@@ -222,9 +222,9 @@ button {
 .type-btn {
     flex: 1;
     padding: 8px 16px;
-    background: #e0e0e0;
-    color: #666;
-    border: 1px solid #d0d0d0;
+    background: #acbfb5;
+    color: #7f323c;
+    border: 1px solid #9bb0b9;
     border-radius: 6px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -232,14 +232,14 @@ button {
 }
 
 .type-btn:hover {
-    background: #d0d0d0;
-    border-color: #bbb;
+    background: #9bb0b9;
+    border-color: #9bb0b9;
 }
 
 .type-btn.active {
-    background: #666;
+    background: #7f323c;
     color: white;
-    border-color: #666;
+    border-color: #7f323c;
 }
 
 .setting-group input[type="range"] {
@@ -250,7 +250,7 @@ button {
 
 #opacityValue {
     font-size: 11px;
-    color: #666;
+    color: #9bb0b9;
 }
 
 .colors-strip {
@@ -295,8 +295,8 @@ button {
 }
 
 .color-bar.drag-over {
-    border-left: 4px solid #333;
-    border-right: 4px solid #333;
+    border-left: 4px solid #7f323c;
+    border-right: 4px solid #7f323c;
 }
 
 .drag-handle {
@@ -498,18 +498,18 @@ input[type="color"]:hover {
     padding: 25px;
     border-radius: 12px;
     text-align: center;
-    border: 2px solid #e0e0e0;
+    border: 2px solid #acbfb5;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .share-section h2 {
     margin-bottom: 10px;
-    color: #333;
+    color: #7f323c;
     font-size: 1.5em;
 }
 
 .share-section p {
-    color: #666;
+    color: #9bb0b9;
     margin-bottom: 15px;
 }
 
@@ -521,7 +521,7 @@ input[type="color"]:hover {
 .share-url input {
     flex: 1;
     padding: 12px;
-    border: 2px solid #e0e0e0;
+    border: 2px solid #acbfb5;
     border-radius: 8px;
     font-size: 14px;
     font-family: 'Courier New', monospace;
@@ -535,7 +535,7 @@ input[type="color"]:hover {
     position: fixed;
     top: 20px;
     right: 20px;
-    background: #4caf50;
+    background: #acbfb5;
     color: white;
     padding: 15px 25px;
     border-radius: 8px;
@@ -555,7 +555,7 @@ input[type="color"]:hover {
 .empty-state {
     text-align: center;
     padding: 60px 20px;
-    color: #999;
+    color: #9bb0b9;
 }
 
 .empty-state h2 {
