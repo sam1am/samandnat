@@ -151,6 +151,46 @@ h4 {
     margin-top: 0.5rem;
 }
 
+/* RSVP Banner */
+.rsvp-banner {
+    background-color: var(--wine);
+    color: var(--white);
+    padding: 1rem;
+    text-align: center;
+}
+
+.rsvp-banner-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.rsvp-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.rsvp-btn {
+    background-color: var(--white);
+    color: var(--wine);
+    padding: 0.6rem 1.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.rsvp-btn:hover {
+    background-color: var(--Champagne);
+    transform: scale(1.05);
+}
+
 /* Navigation */
 nav {
     background-color: var(--white);
@@ -608,6 +648,47 @@ nav ul li a:hover::after {
 
 .packing-tips li {
     margin-bottom: 0.5rem;
+}
+
+/* Guest Info Card */
+.guest-info-card {
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    margin-top: 2rem;
+    border-left: 4px solid var(--sage);
+}
+
+.guest-info-card h3 {
+    color: var(--sage-dark);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.guest-info-card p {
+    margin-bottom: 1rem;
+    line-height: 1.8;
+}
+
+.gifts-note {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--Champagne);
+    text-align: center;
+}
+
+.gifts-note h4 {
+    color: var(--wine);
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+}
+
+.gifts-note p {
+    font-style: italic;
+    color: var(--gray-text);
+    margin-bottom: 0;
 }
 
 .schedule-list {
