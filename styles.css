@@ -1049,6 +1049,13 @@ nav ul li a:hover::after {
 #greece-code-area {
     margin-top: 2rem;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#greece-code-area .code-input-container {
+    justify-content: center;
 }
 
 /* Gallery Section */
