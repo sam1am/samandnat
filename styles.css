@@ -883,12 +883,15 @@ nav ul li a:hover::after {
     background-color: var(--sage);
     color: var(--white);
     padding: 1rem;
-    min-width: 120px;
+    width: 130px;
+    min-width: 130px;
+    flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 500;
     font-size: 0.9rem;
+    text-align: center;
 }
 
 .itinerary-item.highlight .itinerary-dates {
