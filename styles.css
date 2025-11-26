@@ -1036,6 +1036,18 @@ nav ul li a:hover::after {
     min-height: 20px;
 }
 
+.greece-code-prompt {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    color: var(--sage-dark);
+    margin-bottom: 0.75rem;
+}
+
+#greece-code-area {
+    margin-top: 2rem;
+    text-align: center;
+}
+
 /* Gallery Section */
 .photo-gallery {
     display: grid;

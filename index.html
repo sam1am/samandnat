@@ -67,26 +67,39 @@
         <div class="container">
             <h2>Ceremony Information</h2>
             <div class="decorative-line"></div>
-            <div class="content-wrapper">
-                <div class="text-content">
-                    <p class="locations-intro">We're celebrating our marriage in 2026. Please enter your invitation code to view
-                        details.</p>
-
-                    <div class="invitation-code-area">
-                        <div class="code-input-container">
-                            <input type="text" id="invitation-code" placeholder="Invite Code">
-                            <button id="code-submit" class="btn">Submit</button>
+            <div class="location-cards show-section" id="locations-container">
+                <!-- Greece card will be added here dynamically if authenticated -->
+                <div class="location-card" id="greece-card" style="display: none;">
+                    <img src="./images/villa9.avif" alt="Villa Delenia, Greece" class="location-image">
+                    <div class="location-content">
+                        <h3>Greece Ceremony</h3>
+                        <p>April 7, 2026</p>
+                        <p>Villa Delenia, Styra, Greece</p>
+                        <div class="location-access">
+                            <a href="athens.html" class="btn location-btn">View Details</a>
                         </div>
-                        <p id="code-error" class="error-message"></p>
                     </div>
                 </div>
-                <div class="image-frame">
-                    <img src="./images/sn/sn2.jpeg" alt="Sam and Natalie" class="story-image">
+                <div class="location-card">
+                    <img src="./images/spruces1.jpg" alt="The Spruces, Utah" class="location-image">
+                    <div class="location-content">
+                        <h3>Utah Ceremony</h3>
+                        <p>July 2026</p>
+                        <p>The Spruces Campground, Big Cottonwood Canyon</p>
+                        <div class="location-access">
+                            <a href="slc.html" class="btn location-btn">View Details</a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="location-cards hidden-section" id="locations-container">
-                <!-- Cards will appear here after code entry -->
+            <div class="invitation-code-area" id="greece-code-area">
+                <p class="greece-code-prompt">Have a Greece invitation code?</p>
+                <div class="code-input-container">
+                    <input type="text" id="invitation-code" placeholder="Enter Greece Code">
+                    <button id="code-submit" class="btn">Submit</button>
+                </div>
+                <p id="code-error" class="error-message"></p>
             </div>
         </div>
         </section>

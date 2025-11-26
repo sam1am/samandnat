@@ -16,16 +16,15 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Check if user is already authenticated
+    // Check if user is already authenticated for Greece
     const athensAuth = localStorage.getItem('athensAuthenticated') === 'true';
-    const slcAuth = localStorage.getItem('slcAuthenticated') === 'true';
 
-    // If already authenticated, show the appropriate location cards
-    if (athensAuth || slcAuth) {
-        showLocationCards(athensAuth, slcAuth);
+    // If already authenticated for Greece, show the Greece card
+    if (athensAuth) {
+        showGreeceCard();
     }
 
-    // Invitation code validation
+    // Invitation code validation for Greece
     const codeSubmitBtn = document.getElementById('code-submit');
     const codeInput = document.getElementById('invitation-code');
     const codeErrorElement = document.getElementById('code-error');
@@ -35,16 +34,9 @@ document.addEventListener('DOMContentLoaded', function () {
             const enteredCode = codeInput.value.trim().toUpperCase();
 
             if (enteredCode === 'GR26') {
-                // Code for both Athens and SLC
+                // Code for Greece
                 localStorage.setItem('athensAuthenticated', 'true');
-                localStorage.setItem('slcAuthenticated', 'true');
-                showLocationCards(true, true);
-                codeErrorElement.textContent = '';
-            } else if (enteredCode === 'SL26') {
-                // Code for SLC only
-                localStorage.setItem('slcAuthenticated', 'true');
-                localStorage.setItem('athensAuthenticated', 'false');
-                showLocationCards(false, true);
+                showGreeceCard();
                 codeErrorElement.textContent = '';
             } else {
                 // Invalid code
@@ -63,67 +55,16 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Function to show location cards based on authentication
-    function showLocationCards(showAthens, showSLC) {
-        const locationsContainer = document.getElementById('locations-container');
-        if (!locationsContainer) return; // Safety check
+    // Function to show Greece card
+    function showGreeceCard() {
+        const greeceCard = document.getElementById('greece-card');
+        const codeArea = document.getElementById('greece-code-area');
 
-        locationsContainer.innerHTML = ''; 
-        locationsContainer.className = 'location-cards show-section';
-
-
-        if (showAthens) {
-            // Add Athens card
-            const athensCard = document.createElement('div');
-            athensCard.className = 'location-card';
-            athensCard.innerHTML = `
-                <img src="./images/villa9.avif" alt="Villa Delenia, Greece" class="location-image">
-                <div class="location-content">
-                    <h3>Greece Ceremony</h3>
-                    <p>April 7, 2026</p>
-                    <p>Villa Delenia, Styra, Greece</p>
-                    <div class="location-access">
-                        <a href="athens.html" class="btn location-btn">View Details</a>
-                    </div>
-                </div>
-            `;
-            locationsContainer.appendChild(athensCard);
-        }
-
-        if (showSLC) {
-            // Add SLC card
-            const slcCard = document.createElement('div');
-            slcCard.className = 'location-card';
-            slcCard.innerHTML = `
-                <img src="./images/spruces1.jpg" alt="The Spruces, Utah" class="location-image">
-                <div class="location-content">
-                    <h3>Utah Ceremony</h3>
-                    <p>July 2026</p>
-                    <p>The Spruces Campground, Big Cottonwood Canyon</p>
-                    <div class="location-access">
-                        <a href="slc.html" class="btn location-btn">View Details</a>
-                    </div>
-                </div>
-            `;
-            locationsContainer.appendChild(slcCard);
-        }
-
-        // Show the container
-        locationsContainer.classList.remove('hidden-section');
-        locationsContainer.classList.add('show-section');
-
-        // Update the intro text
-        const locationsIntro = document.querySelector('.locations-intro');
-        if (locationsIntro) {
-            if (showAthens && showSLC) {
-                locationsIntro.textContent = "We're celebrating our marriage with two ceremonies - one in Greece and one in Utah. Please join us for one or both!";
-            } else if (showSLC) {
-                locationsIntro.textContent = "We're celebrating our marriage with a beautiful ceremony in Utah. We'd be honored to have you join us!";
-            }
+        if (greeceCard) {
+            greeceCard.style.display = 'block';
         }
 
         // Hide the code input area
-        const codeArea = document.querySelector('.invitation-code-area');
         if (codeArea) {
             codeArea.style.display = 'none';
         }
