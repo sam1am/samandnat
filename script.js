@@ -34,10 +34,9 @@ document.addEventListener('DOMContentLoaded', function () {
             const enteredCode = codeInput.value.trim().toUpperCase();
 
             if (enteredCode === 'GR26') {
-                // Code for Greece
+                // Code for Greece - redirect to Athens page
                 localStorage.setItem('athensAuthenticated', 'true');
-                showGreeceCard();
-                codeErrorElement.textContent = '';
+                window.location.href = 'athens.html';
             } else {
                 // Invalid code
                 codeErrorElement.textContent = 'Invalid code. Please try again or contact the couple for assistance.';
