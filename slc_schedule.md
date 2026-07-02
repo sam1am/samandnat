@@ -3,9 +3,11 @@
 8:30: Cocktail party at Melancholy
 
 31 Friday: 
-5pm: Ceremony At Spruces
-6pm: BBQ
-9pm: Dance Party at Salton Sun
+3pm: Cocktail Hour
+4pm: Ceremony At Spruces
+BBQ to follow
+7pm: Wrap Up
+8pm: Afterparty at Salton (173 W Angelo Ave) featuring Triggers & Slips
 
 1 Saturday: 
 Noon: Brunch Potluck

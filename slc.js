@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Ceremony: July 31, 2026, 5:00 PM at The Spruces
-    const weddingDate = new Date('July 31, 2026 17:00:00').getTime();
+    // Ceremony: July 31, 2026, 4:00 PM at The Spruces
+    const weddingDate = new Date('July 31, 2026 16:00:00').getTime();
 
     // Update the countdown every second
     const countdown = setInterval(function () {
