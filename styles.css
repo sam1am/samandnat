@@ -119,6 +119,64 @@ h4 {
     justify-content: center;
 }
 
+/* Condensed Hero (title bar style) */
+.hero-condensed {
+    height: auto;
+    min-height: 0;
+    padding: 1rem;
+}
+
+.hero-condensed .hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    column-gap: 1.5rem;
+    row-gap: 0.5rem;
+    max-width: 1100px;
+    padding: 0.75rem 1.5rem;
+    animation: none;
+}
+
+.hero-condensed .flourish {
+    display: none;
+}
+
+.hero-condensed .save-date {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.hero-condensed .names {
+    font-size: 1.8rem;
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+.hero-condensed .date,
+.hero-condensed .location {
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.hero-condensed .countdown {
+    margin-top: 0;
+}
+
+.hero-condensed .countdown-item {
+    margin: 0 0.5rem;
+    min-width: 45px;
+}
+
+.hero-condensed .countdown-item span:first-child {
+    font-size: 1.2rem;
+    padding: 0.25rem;
+}
+
+.hero-condensed .label {
+    font-size: 0.6rem;
+}
+
 /* Countdown Timer */
 .countdown {
     display: flex;
@@ -1171,6 +1229,19 @@ footer {
 @media (max-width: 768px) {
     .hero-content {
         padding: 1.5rem;
+    }
+
+    .hero-condensed .names {
+        font-size: 1.4rem;
+    }
+
+    .hero-condensed .save-date {
+        font-size: 1rem;
+    }
+
+    .hero-condensed .date,
+    .hero-condensed .location {
+        font-size: 0.8rem;
     }
 
     .names {
