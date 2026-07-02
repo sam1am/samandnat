@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Set the wedding date (using a placeholder date in July 2026)
-    const weddingDate = new Date('July 15, 2026 16:00:00').getTime();
+    // Ceremony: July 31, 2026, 5:00 PM at The Spruces
+    const weddingDate = new Date('July 31, 2026 17:00:00').getTime();
 
     // Update the countdown every second
     const countdown = setInterval(function () {
