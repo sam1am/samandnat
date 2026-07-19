@@ -1,5 +1,6 @@
 30 Thursday:
-7:00pm: Group Sunset Bike Ride To Melancholy
+7:00pm: Meet at Salton (173 W Angelo Ave) to decorate your bike
+8:00pm: Group Sunset Bike Ride To Melancholy
 8:30: Cocktail party at Melancholy
 
 31 Friday: 
@@ -10,5 +11,7 @@ BBQ to follow
 8pm: Afterparty at Salton (173 W Angelo Ave) featuring Triggers & Slips
 
 1 Saturday: 
-Noon: Brunch Potluck
+
+2 Sunday:
+7:00pm: Plastic Cherries show at Kilby Court
 
